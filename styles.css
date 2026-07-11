@@ -1,15 +1,17 @@
 :root {
     --cutecolor: rgb(154, 192, 180);
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
     padding: 20px;
     background-color: rgb(182, 173, 173);
+    height: 100vh;
 }
 
 body {
-    flex: 0 1 1000px;
+    margin: 0 auto;
+    /* flex: 0 1 1000px; */
+    height: 100%;
     max-width: 1000px;
-    height: 100vh;
     background-color: whitesmoke;
     display: grid;
     grid-template-rows: 200px 1fr 200px;
@@ -17,7 +19,42 @@ body {
 
 
 
-header,
 footer {
     background-color: var(--cutecolor);
+}
+
+header img {
+    width: 150px;
+    height: 170px;
+    object-position: right 80%;
+    object-fit: cover;
+}
+
+footer img {
+    object-position: left 20%;
+    object-fit: contain;
+}
+
+header {
+    position: relative;
+}
+
+header:before {
+    content: "";
+    position: absolute;
+    background-color: brown;
+    top: -120px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    transform: skewY(-10deg);
+    transform-origin: 50% 0;
+}
+
+header>div {
+    position: relative;
+}
+
+main {
+    margin-top: 100px;
 }
