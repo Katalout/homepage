@@ -1,5 +1,6 @@
 :root {
     --cutecolor: rgb(154, 192, 180);
+    --shadow: 3px 3px 10px 0px #969696a7;
     /* display: flex;
     justify-content: center; */
     padding: 20px;
@@ -23,9 +24,13 @@ footer {
     background-color: var(--cutecolor);
 }
 
+img {
+    box-shadow: var(--shadow);
+}
+
 header img {
-    width: 150px;
-    height: 170px;
+    width: 200px;
+    height: 210px;
     object-position: right 80%;
     object-fit: cover;
 }
@@ -37,12 +42,14 @@ footer img {
 
 header {
     position: relative;
+    padding: 0 20px;
 }
 
 header:before {
+    box-shadow: var(--shadow);
     content: "";
     position: absolute;
-    background-color: brown;
+    background-color: var(--cutecolor);
     top: -120px;
     right: 0;
     left: 0;
@@ -53,6 +60,32 @@ header:before {
 
 header>div {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title_img_div {
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+}
+
+.title {
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.565);
+    color: white;
+}
+
+header section {
+    background-color: whitesmoke;
+    -webkit-box-shadow: var(--shadow);
+    box-shadow: var(--shadow);
+    padding: 10px;
 }
 
 main {
