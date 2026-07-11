@@ -1,0 +1,23 @@
+:root {
+    --cutecolor: rgb(154, 192, 180);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(182, 173, 173);
+}
+
+body {
+    flex: 0 1 1000px;
+    max-width: 1000px;
+    height: 100vh;
+    background-color: whitesmoke;
+    display: grid;
+    grid-template-rows: 200px 1fr 200px;
+}
+
+
+
+header,
+footer {
+    background-color: var(--cutecolor);
+}
