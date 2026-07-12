@@ -3,9 +3,10 @@
     --shadow: 3px 3px 10px 0px #969696a7;
     /* display: flex;
     justify-content: center; */
-    padding: 20px;
+    --padding: 40px;
+    padding: var(--padding);
     background-color: rgb(182, 173, 173);
-    height: 100vh;
+    min-height: 100vh;
 }
 
 h1,
@@ -21,7 +22,7 @@ body {
     max-width: 1000px;
     background-color: whitesmoke;
     display: grid;
-    grid-template-rows: 200px 1fr 300px;
+    grid-template-rows: 200px 1fr 350px;
 }
 
 
@@ -51,7 +52,7 @@ footer img {
 
 header {
     position: relative;
-    padding: 0 20px;
+    padding: 0 var(--padding);
 }
 
 header:before {
@@ -98,25 +99,90 @@ header section {
 }
 
 main {
-    padding: 20px;
+    padding: var(--padding);
     margin-top: 100px;
 }
 
 .card_container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 1rem;
+    grid-gap: 30px;
 }
 
 .card {
     -webkit-box-shadow: var(--shadow);
     box-shadow: var(--shadow);
+    padding: 10px 10px 0px 10px;
+}
+
+.card h3 {
+    margin-top: 10px;
+}
+
+.card .mockimg {
+    height: 150px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+
+}
+
+.mockimg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.card:nth-child(1) .mockimg::before {
+
+    background-image: linear-gradient(to bottom, red 20%, orange 20% 40%, yellow 40% 60%, rgb(21, 181, 0) 60% 80%, blue 80%);
+
+}
+
+.card:nth-child(2) .mockimg::before {
+    background-image: linear-gradient(to bottom, skyblue 20%, pink 20% 40%, white 40% 60%, pink 60% 80%, skyblue 80%);
+    opacity: 0.5;
+}
+
+.card:nth-child(3) .mockimg::before {
+    background-image: linear-gradient(to bottom, rgb(21, 181, 0) 20%, rgb(62, 217, 83) 20% 40%, white 40% 60%, gray 60% 80%, black 80%);
+}
+
+.card:nth-child(4) .mockimg::before {
+    background-image: linear-gradient(to bottom, orange 20%, rgb(240, 213, 58) 20% 40%, white 40% 60%, skyblue 60% 80%, rgb(74, 74, 170) 80%)
+}
+
+.card:nth-child(5) .mockimg::before {
+    background-image: linear-gradient(to bottom, black 25%, gray 25% 50%, white 50% 75%, purple 75%);
+
+}
+
+
+
+.card:nth-child(6) .mockimg::before {
+    background-image: linear-gradient(to bottom, yellow 25%, white 25% 50%, purple 50% 75%, black 75%);
+}
+
+.card:nth-child(5) .mockimg {
+    text-shadow: 2px -2px 2px white,
+        1px 1px 1px gray;
+}
+
+.card:nth-child(6) .mockimg {
+    text-shadow: 2px 2px 2px white, 1px -1px 1px gray;
 }
 
 footer {
-    padding: 20px;
+    padding: var(--padding);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 20px;
     /* align-items: center; */
 }
