@@ -19,6 +19,7 @@
 :root {
     --h1fontsize: min(calc(2em + 0.3vw), 2.2em);
     --h2fontsize: min(calc(1.5em + 0.3vw), 1.8em);
+    --h3fontsize: min(calc(1.2em + 0.3vw), 1.4em);
     --pfontsize: min(calc(1em + 0.3vw), 1.3em);
     --cutecolor: rgb(154, 192, 180);
     --shadow: 3px 3px 10px 0px #969696a7;
@@ -28,6 +29,7 @@
     padding: var(--padding) 0 0 0;
     background-color: rgb(182, 173, 173);
     min-height: 100vh;
+    min-width: 100vw;
 }
 
 .sr-only {
@@ -51,11 +53,17 @@ h3 {
 }
 
 p,
-address,
 a {
+    font-size: var(--pfontsize);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     letter-spacing: 3%;
+    font-size: calc(var(--pfontsize) + 5px);
+    line-height: calc(1.5);
 
+}
+
+h3 {
+    font-size: calc(var(--h3fontsize) + 2px);
 }
 
 a {
@@ -69,9 +77,10 @@ body {
     /* flex: 0 1 1000px; */
     height: 100%;
     max-width: 1200px;
+    min-width: 300px;
     background-color: whitesmoke;
     display: grid;
-    grid-template-rows: auto 1fr minmax(350px, 450px);
+    grid-template-rows: auto 1fr auto;
 }
 
 
@@ -154,11 +163,7 @@ header section {
     /* ahogy a kep (vw) nö, növeszteni kene a betüt issss */
 }
 
-header section p {
-    font-size: var(--pfontsize);
-}
-
-header section h2 {
+h2 {
     font-size: var(--h2fontsize);
 }
 
@@ -279,7 +284,7 @@ footer {
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    /* align-items: center; */
+    align-items: center;
 }
 
 footer h2 {
@@ -288,12 +293,7 @@ footer h2 {
 
 .footer_text {
     text-wrap: pretty;
-    anchor-name: --text;
-
-}
-
-footer p {
-    font-size: var(--pfontsize);
+    min-width: 300px;
 }
 
 footer address img {
@@ -303,21 +303,18 @@ footer address img {
     margin-right: 1em;
 }
 
-footer address a:first-of-type {
+footer address>a:first-of-type {
     display: block;
     margin-bottom: 0.3em;
 }
 
 footer .portrait {
-    position-anchor: --text;
-    top: anchor(top);
-    bottom: anchor(bottom);
-    flex: 1 1 300px;
-    height: 100%;
-    max-width: 500px;
+    flex: 1 1 0;
+    max-height: 80%;
+    max-width: 50%;
     object-fit: contain;
     background-color: black;
-    /* anchor the bitch to the text */
+    /* ez jo keskenynel, de nagyon megnö szeleskepernyön, a padding is lehet prollema */
 }
 
 @media (600px < width < 1000px) {
@@ -367,4 +364,84 @@ footer .portrait {
 
     /* ooh the shape-outside mdn page has some interesting solution to the diagonal line too (clip-path), but alsoo the text wrap around the picture. */
 
+}
+
+@media (width <=600px) {
+    :root {
+        --padding: 10px;
+        padding: 0;
+        --pad: 5vw;
+    }
+
+    header {
+        padding: 0;
+    }
+
+    header:before {
+        position-anchor: --portrait;
+        top: -200px;
+        right: 0;
+        left: 0;
+        bottom: calc(anchor(bottom) + 13%);
+        transform: skewY(-18deg);
+    }
+
+    header>div {
+        display: block;
+    }
+
+    header img {
+
+        /* display: block; */
+        margin: var(--pad);
+        width: calc(100% - (2 * var(--pad)));
+        /* outline: 10px solid rgba(128, 128, 128, 0.422);
+        outline-offset: -10px; */
+        box-shadow: 2px 5px 13px 3px #7272729c;
+        background-color: gray;
+    }
+
+
+    header h1.title {
+        font-size: clamp(1.8em, 7vw, 2em);
+        padding: calc((100vw - 350px) * 0.1);
+        background-color: rgba(128, 128, 128, 0.41);
+    }
+
+    header section {
+        text-align: center;
+        box-shadow: none;
+    }
+
+    header section .icons {
+        justify-content: center;
+    }
+
+    footer {
+        padding: 0;
+    }
+
+    .footer_text {
+        padding: var(--pad)
+    }
+
+    footer {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .footer_text h2 {
+        text-align: center;
+    }
+
+    footer .portrait {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    footer .icons {
+        font-size: 2em;
+        justify-content: center;
+        line-height: 0.5;
+    }
 }
